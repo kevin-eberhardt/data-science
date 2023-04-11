@@ -40,7 +40,7 @@ After that, you have to setup the environment variables:
 _WORKING_DIRECTORY_: You can get the path of your working directory by typing `pwd` in your directory in the terminal where the README is stored
 
 
-### Taks
+### Tasks
 #### Task 1a: Infrastructure
 Conceptualize your analysis architecture including 
 (elements, technology and environment)
