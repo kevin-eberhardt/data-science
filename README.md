@@ -38,3 +38,8 @@ After that, you have to setup the environment variables:
 | `WORKING_DIRECTORY` | Path of the directory python is running in |
 
 _WORKING_DIRECTORY_: You can get the path of your working directory by typing `pwd` in your directory in the terminal where the README is stored
+
+
+###Taks
+
+https://e-learning.hdm-stuttgart.de/moodle/pluginfile.php/452840/mod_resource/content/2/2023_DS3_Intro_and_CaseDescription.pdf
