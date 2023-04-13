@@ -12,3 +12,4 @@
 - Ganze Data Exploration mit ChatGPT und Copilot versuchen, erstellen zu lassen --> Luca
   - Wie detailiert wird in das Thema eingestiegen und was schlägt ChatGPT als guten Prozess vor? Bleibt es übersicthlich oder wird es zu unübersichtlich?
 - Kann Copilot auch Interpretationen über die Schaubilder oder die Daten machen?
+- CRISP-DM als Vorlage für den Data Science Prozess --> Wo ändert sich dieser Prozess bei der Verwendung von Copilot etc.?
