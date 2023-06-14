@@ -73,3 +73,15 @@ Fragen, die wir uns erst einmal stellen müssen:
 3. Modell trainieren
 4. Modell testen
 5. Modell bewerten
+
+## Aufgaben
+
+Bausteine Pipeline:
+
+1. Outlier Detection (Mike & Marvin (Datentypen))
+2. Missing Values (Mike)
+3. Data Transformation (Marvin)
+4. Feature Selection (Valentin)
+5. Feature Scaling (Luca)
+6. Dimensionality Reduction (Luca)
+7. Modell-Training & -Testing (Kevin)
