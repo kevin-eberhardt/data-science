@@ -1,0 +1,33 @@
+[
+    {
+        "name": "LinearRegression",
+        "best_params": {
+            "model__copy_X": true,
+            "model__fit_intercept": true,
+            "model__n_jobs": 1
+        },
+        "best_score": 0.5634281044319994
+    },
+    {
+        "name": "DecisionTreeRegressor",
+        "best_params": {
+            "model__criterion": "squared_error",
+            "model__max_depth": null,
+            "model__min_samples_leaf": 10,
+            "model__min_samples_split": 2,
+            "model__splitter": "best"
+        },
+        "best_score": 0.6228820105488364
+    },
+    {
+        "name": "RandomForestRegressor",
+        "best_params": {
+            "model__criterion": "squared_error",
+            "model__max_depth": null,
+            "model__min_samples_leaf": 1,
+            "model__min_samples_split": 2,
+            "model__n_estimators": 200
+        },
+        "best_score": 0.7841256503291156
+    }
+]
