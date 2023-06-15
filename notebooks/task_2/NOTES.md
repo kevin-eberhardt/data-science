@@ -73,3 +73,35 @@ Fragen, die wir uns erst einmal stellen müssen:
 3. Modell trainieren
 4. Modell testen
 5. Modell bewerten
+
+
+## Besprechung 15.06.2023
+
+Ausreißer die hoch aber möglich sind = Mechanismus der auch bei Testdaten funktioniert (ersetzen nicht löschen)
+Outlier nicht löschen sondern erstetzen (Mittelwert ersetzen, etc)
+PCA / Dimensionality Reduction machen / ausprobieren Grund: 
+Feature Selection = bei Trainingsdaten FSelection machen (automatisiert) und für Testdaten Abzweigung wo die selben Features genutzt werden (auch bei PCA)
+-> Features nach der Selection rausschreiben (JSON)
+Modelle ok -> Gridsearch auf die Parameter der einzelnen Modelle
+Neural Network als Bonus vielleicht?
+Feature Scaling für einzelne Modelle 
+-> Iterativ mit Modell selecten
+-> Entscheidungsbaum wählt features selber
+-> bei manchen Modellen brauchen wir keine extra Feature Selection
+-> Modelle berechnen eigenen P-Wert
+-> wir machen bisher Filter Ansatz
+-> lass uns auch Modell-Ansatz probieren
+-> mehrere Pipeline (1 pro Algor.)
+
+Wichtig: Für die Präsentation müssen wir ready sein Meths Daten durch das trainierte Modell durchlaufen lassen.
+
+Wie bewerten wir die Modelle?
+MRE nicht genormt 
+R²
+Wie gut sind die Features?
+
+Gibt bei Scikit Learn auch module, die Modelle vergleichen können.
+
+
+Idee GitHub Copilot:
+- Wenn man einmal die Struktur der Pipeline Bausteine gemacht hat ist Copilot clever genug um neue Schritte hinzuzufügen.
