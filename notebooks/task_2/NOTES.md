@@ -74,8 +74,19 @@ Fragen, die wir uns erst einmal stellen müssen:
 4. Modell testen
 5. Modell bewerten
 
+## Aufgaben
 
-## Besprechung 15.06.2023
+Bausteine Pipeline:
+
+1. Outlier Detection (Mike & Marvin (Datentypen))
+2. Missing Values (Mike)
+3. Data Transformation (Marvin)
+4. Feature Selection (Valentin)
+5. Feature Scaling (Luca)
+6. Dimensionality Reduction (Luca)
+7. Modell-Training & -Testing (Kevin)
+
+## Besprechung 15.06.
 
 Ausreißer die hoch aber möglich sind = Mechanismus der auch bei Testdaten funktioniert (ersetzen nicht löschen)
 Outlier nicht löschen sondern erstetzen (Mittelwert ersetzen, etc)
