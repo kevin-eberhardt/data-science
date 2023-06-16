@@ -7,6 +7,14 @@ import pandas as pd
 import numpy as np
 import statsmodels.api as sm
 
+#imports for pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
+from sklearn.impute import KNNImputer
+from sklearn.decomposition import PCA
+from scipy import stats
+
+
 
 def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
     #-------------------------------------------------Colinearity-------------------------------------------------
@@ -107,3 +115,77 @@ def fs_vif(df, correlation_threshold=0.1, vif_threshold=5):
     
    
     return dropped_features
+
+def outlier_label(df):
+    """This function detects outliers in the dataframe and imputes them with KNNImputer.
+    :param df: dataframe with only the label
+    """
+    #detect outliers and impute them with the simple imputer
+
+    #detect outliers with z-score and set them to NaN with = np.nan
+
+    z = np.abs(stats.zscore(df.iloc[:, df.shape[1]-1]))
+    df.iloc[:, df.shape[1]-1][(z >= 3)] = np.nan
+
+    #impute outliers with linear regression
+    imputer = KNNImputer(n_neighbors=5).set_output(transform="pandas")
+    df = imputer.fit_transform(df)
+    
+    return df
+
+def outlier_num(df, strategy):
+    """This function detects outliers in the dataframe and imputes them with the median.
+    :param df: dataframe with only numerical features
+    :param strategy: choose median, mean  most_frequent method. Defaul = median
+    """
+    #detect outliers and impute them with the simple imputer
+    #detect outliers
+    Q1 = df.quantile(0.25)
+    Q3 = df.quantile(0.75)
+    IQR = Q3 - Q1
+
+    #detect outliers for each column and set them to NaN
+    for col in df.columns:
+        df.loc[(df[col] < (Q1[col] - 1.5 * IQR[col])) | (df[col] > (Q3[col] + 1.5 * IQR[col])), col] = np.nan
+
+    #impute outliers with median
+    if strategy == 'median':
+        imputer = SimpleImputer(strategy='median').set_output(transform="pandas")
+        df = imputer.fit_transform(df)
+    #impute outliers with mean
+    elif strategy == 'mean':
+        imputer = SimpleImputer(strategy='mean').set_output(transform="pandas")
+        df = imputer.fit_transform(df)
+    #impute outliers with most frequent value
+    elif strategy == 'most_frequent':
+        imputer = SimpleImputer(strategy='most_frequent').set_output(transform="pandas")
+        df = imputer.fit_transform(df)
+    else:
+        #impute outliers with median
+        imputer = SimpleImputer(strategy='median').set_output(transform="pandas")
+        df = imputer.fit_transform(df)
+
+    return df
+
+
+
+def dim_reduction(df, n_components):
+    """This function applies dimensionality reduction to the dataframe.
+    :param df: dataframe with only numerical features
+    :param n_components: threshold for the explained variance (default=0.95)
+    """
+    #dimensionality reduction with PCA
+    #we want the explained variance to be 95%. 
+    #with choosing n_components=0.95,
+    #PCA will return the minimum number of principal components 
+    #at which 95% of the variance is retained.
+    pca = PCA(n_components)
+    #apply pca to numerical features
+    df = pca.fit_transform(df)
+
+    #write pca to a pickle file
+    import pickle
+    with open('\models\pca.pickle', 'wb') as outfile:
+        pickle.dump(pca, outfile)
+
+    return df
