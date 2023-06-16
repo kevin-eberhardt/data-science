@@ -43,7 +43,6 @@ def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
                 corr_col = df[col1].corr(df['label__quality'])
                 if abs(corr_col) < correlation_threshold:
                     print("Dropping " + col1 + " because of low correlation "+str(corr_col1)+" with quality"+ "\n")
-                    df = df.drop(col1, axis=1)
                     dropped_features.append(col1)
                 else:
                     print("Not Dropping " + col1 + " because of high correlation "+str(corr_col1)+" with quality"+ "\n")
@@ -52,13 +51,10 @@ def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
                 corr_col = df[col2].corr(df['label__quality'])
                 if abs(corr_col) < correlation_threshold:
                     print("Dropping " + col2 + " because of low correlation "+str(corr_col)+" with quality"+ "\n")
-                    df = df.drop(col2, axis=1)
                     dropped_features.append(col2)
                 else: 
                     print("Not Dropping " + col2 + " because of high correlation "+str(corr_col)+" with quality"+ "\n")
                      
-    print("HI")
-
     print("Every colinearity is below the threshold of "+str(colinearity_threshold)+"! \n")
     return dropped_features
 
@@ -106,7 +102,6 @@ def fs_vif(df, correlation_threshold=0.1, vif_threshold=5):
             # Remove the feature if correlation is below the threshold
             print("Dropping " + highest_vif_feature + " because of low correlation "+str(correlation)+" with quality"+ "\n")
             dropped_features.append(highest_vif_feature)
-            df = df.drop(highest_vif_feature, axis=1)
             df_selected = df_selected.drop(highest_vif_feature, axis=1)  # Drop from df_selected as well
         else:
             print("Not Dropping " + highest_vif_feature + " because of high correlation "+str(correlation)+" with quality"+ "\n")
