@@ -133,7 +133,7 @@ def outlier_label(df):
     
     return df
 
-def outlier_num(df, strategy):
+def outlier_num(df, strategy='median'):
     """This function detects outliers in the dataframe and imputes them with the median.
     :param df: dataframe with only numerical features
     :param strategy: choose median, mean  most_frequent method. Defaul = median
@@ -169,7 +169,7 @@ def outlier_num(df, strategy):
 
 
 
-def dim_reduction(df, n_components):
+def dim_reduction(df, n_components=0.95):
     """This function applies dimensionality reduction to the dataframe.
     :param df: dataframe with only numerical features
     :param n_components: threshold for the explained variance (default=0.95)
