@@ -116,3 +116,4 @@ Gibt bei Scikit Learn auch module, die Modelle vergleichen können.
 
 Idee GitHub Copilot:
 - Wenn man einmal die Struktur der Pipeline Bausteine gemacht hat ist Copilot clever genug um neue Schritte hinzuzufügen.
+- hyperparameter tuning with gridsearch -> Copilot Vorschläge machen nicht immer Sinn (C=1000 dauert ewig)
