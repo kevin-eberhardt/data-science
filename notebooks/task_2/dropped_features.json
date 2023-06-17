@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ["num__minerals", "cat__wine type_Pinot noir", "num__residual sugar", "num__calcium", "num__free sulfur dioxide"]
+=======
+["num__free sulfur dioxide", "cat__wine type_Pinot noir", "num__minerals", "num__calcium", "num__residual sugar"]
+>>>>>>> 09c5a290e32f3a8a1bc6e273d87b968b414f60c8
