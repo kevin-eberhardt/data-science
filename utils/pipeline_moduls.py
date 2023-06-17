@@ -13,7 +13,8 @@ from sklearn.impute import SimpleImputer
 from sklearn.impute import KNNImputer
 from sklearn.decomposition import PCA
 from scipy import stats
-
+import os
+import pickle
 
 
 def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
@@ -169,3 +170,18 @@ def dim_reduction(df, n_components=0.95):
         pickle.dump(pca, outfile)
 
     return df
+
+#load models from ./task_2/models
+def load_best_models():
+    #search directory ./task_2/models for .pkl files and append them to a list
+    models = []
+    for file in os.listdir('../task_2/models'):
+        if file.endswith('.pkl'):
+            models.append(file)
+
+    #load models from ./task_2/models
+    for model in models:
+        with open('../task_2/models/' + model, 'rb') as infile:
+            model = pickle.load(infile)
+            
+    return models

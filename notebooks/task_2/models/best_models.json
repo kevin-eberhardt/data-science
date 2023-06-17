@@ -1,0 +1,49 @@
+[
+    {
+        "name": "LinearRegression",
+        "best_params": {
+            "copy_X": true,
+            "fit_intercept": true,
+            "n_jobs": -1
+        },
+        "best_score": 0.5293323508651558,
+        "fit_time": 0.007191896438598633
+    },
+    {
+        "name": "DecisionTreeRegressor",
+        "best_params": {
+            "criterion": "squared_error",
+            "max_depth": null,
+            "min_samples_leaf": 1,
+            "min_samples_split": 2,
+            "splitter": "best"
+        },
+        "best_score": 0.7518946102221149,
+        "fit_time": 0.05507922172546387
+    },
+    {
+        "name": "RandomForestRegressor",
+        "best_params": {
+            "criterion": "squared_error",
+            "max_depth": null,
+            "min_samples_leaf": 1,
+            "min_samples_split": 2,
+            "n_estimators": 200,
+            "n_jobs": -1
+        },
+        "best_score": 0.8302022991981653,
+        "fit_time": 2.1180520057678223
+    },
+    {
+        "name": "Gradient Boosting Regressor",
+        "best_params": {
+            "learning_rate": 0.01,
+            "loss": "squared_error",
+            "max_depth": null,
+            "min_samples_split": 10,
+            "n_estimators": 500
+        },
+        "best_score": 0.8378188962368565,
+        "fit_time": 22.397153854370117
+    }
+]
