@@ -24,6 +24,17 @@ R2:  0.7298443058051178
 {'max_depth': 20, 'n_estimators': 200}
 ->Robust
 ```
+```
+MSE:  0.34514472704662297
+R2:  0.716287649665585
+-> Poly Features (3 Minuten)
+```
+```
+MSE:  0.34565108185658344
+R2:  0.7272876940493196
+-> Poly Features MinMax (3 Minuten)
+```
+
 ---
 
 ## KNN:
@@ -121,3 +132,56 @@ R2:  0.5693751517312733
 {'C': 100, 'gamma': 0.1, 'kernel': 'poly'}
 -> MinMax (12 Sekunden)
 ```
+---
+
+# Results
+Scaling is useful and necessary for following models: 
+- KNN
+- ANN
+- SVM
+
+Scaling is not useful or improves results significantly for following models:
+- Random Forest
+- Gradient Boosting
+- Linear Regression
+
+
+### Results without scaling vs with best scaling method:
+| Model | MSE | R² |
+| ----------- | ----------- | ----------- |
+| Random Forest | -1.46% | +1.1% |
+| Gradient Boosting | +4.8% | -2.9% |
+| Linear Regression | -0.5% | +1.5% |
+| KNN* | -∞ | +∞ |
+| ANN* | -∞ | +∞ |
+| SVM* | -∞ | +∞ |
+
+
+*all had Error > 1 and R² < 0
+
+\
+The different scaling methods have no significant impact on the results for most models. 
+
+
+But for KNN, MinMaxScaler outperformed the other scalers.
+
+### MSE:
+```
+MinMaxScaler:   0%
+StandardScaler: +74.5%
+RobustScaler:   +62,1%
+```
+### R²:
+```
+MinMaxScaler:   0%
+StandardScaler: -68.4%
+RobustScaler:   -52.6%
+```
+**MinMaxScaler** is reliable and fast, so it is the best choice for scaling.
+
+SVM's without scaling the data are not usable, because the training takes too long.
+
+Polinomial feature transformation did not improve the results.
+Deviation to best result:\
+`+1.16% MSE (Random Forest)`\
+`-1.24% R2 (Random Forest)`
