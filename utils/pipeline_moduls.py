@@ -19,8 +19,6 @@ from scipy import stats
 def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
     #-------------------------------------------------Colinearity-------------------------------------------------
     dropped_features = []
-    print(9*"\n")
-    print("--------Colinearity--------"+ "\n")
     # Calculate the correlation between columns
     corr_matrix = df.corr().abs()
     # Create a mask to select the upper triangle of the correlation matrix
@@ -38,28 +36,16 @@ def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
     for col1, col2 in colinear_columns:
         corr_col1 = df[col1].corr(df['label__quality'])
         corr_col2 = df[col2].corr(df['label__quality'])
-        print("High Colinearity between " + col1 + " and "+col2 + " with a value of " + str(colinearity_values[col1, col2]))
         if abs(corr_col1) < abs(corr_col2):
                 corr_col = df[col1].corr(df['label__quality'])
                 if abs(corr_col) < correlation_threshold:
-                    print("Dropping " + col1 + " because of low correlation "+str(corr_col1)+" with quality"+ "\n")
-                    df = df.drop(col1, axis=1)
                     dropped_features.append(col1)
-                else:
-                    print("Not Dropping " + col1 + " because of high correlation "+str(corr_col1)+" with quality"+ "\n")
-
         else:
                 corr_col = df[col2].corr(df['label__quality'])
                 if abs(corr_col) < correlation_threshold:
-                    print("Dropping " + col2 + " because of low correlation "+str(corr_col)+" with quality"+ "\n")
-                    df = df.drop(col2, axis=1)
                     dropped_features.append(col2)
-                else: 
-                    print("Not Dropping " + col2 + " because of high correlation "+str(corr_col)+" with quality"+ "\n")
+              
                      
-    print("HI")
-
-    print("Every colinearity is below the threshold of "+str(colinearity_threshold)+"! \n")
     return dropped_features
 
 def fs_vif(df, correlation_threshold=0.1, vif_threshold=5):
@@ -76,7 +62,6 @@ def fs_vif(df, correlation_threshold=0.1, vif_threshold=5):
     # Add a constant column to the dataframe (required for VIF calculation)
     df_selected = sm.add_constant(df_selected)
 
-    print("--------VIF--------"+ "\n")
     vifToRemove = 0
     while True:
         # Calculate VIF values for remaining features
@@ -90,7 +75,6 @@ def fs_vif(df, correlation_threshold=0.1, vif_threshold=5):
         vif.sort_values('VIF', ascending=False, inplace=True)
         # Check if all VIF values are below the threshold
         if all(vif.iloc[vifToRemove:, vif.columns.get_loc("VIF")] < vif_threshold):
-            print("Every VIF is below the threshold of "+str(vif_threshold)+"! \n")
             break
 
         # Find the feature with the highest VIF value
@@ -99,17 +83,13 @@ def fs_vif(df, correlation_threshold=0.1, vif_threshold=5):
         
         # Check correlation of the highest VIF feature with quality label
         correlation = df[highest_vif_feature].corr(df["label__quality"])
-        print("Highest VIF Value, Feature: " + str(highest_vif_feature) + " with a value of " + str(vif.iloc[vifToRemove]["VIF"]))
        
 
         if abs(correlation) < correlation_threshold:
             # Remove the feature if correlation is below the threshold
-            print("Dropping " + highest_vif_feature + " because of low correlation "+str(correlation)+" with quality"+ "\n")
             dropped_features.append(highest_vif_feature)
-            df = df.drop(highest_vif_feature, axis=1)
             df_selected = df_selected.drop(highest_vif_feature, axis=1)  # Drop from df_selected as well
         else:
-            print("Not Dropping " + highest_vif_feature + " because of high correlation "+str(correlation)+" with quality"+ "\n")
             # Move on to the next highest VIF feature
             vifToRemove = vifToRemove + 1
     
