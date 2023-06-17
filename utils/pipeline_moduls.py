@@ -173,15 +173,13 @@ def dim_reduction(df, n_components=0.95):
 
 #load models from ./task_2/models
 def load_best_models():
-    #search directory ./task_2/models for .pkl files and append them to a list
     models = []
-    for file in os.listdir('../task_2/models'):
+    dirname = "./models"
+    for file in os.listdir(dirname):
         if file.endswith('.pkl'):
-            models.append(file)
-
-    #load models from ./task_2/models
-    for model in models:
-        with open('../task_2/models/' + model, 'rb') as infile:
-            model = pickle.load(infile)
-            
+            # load pickle file
+            dir = os.path.join(dirname, file)  # Construct the full path
+            model = pickle.load(open(dir, 'rb'))
+            models.append(model)  # Append the loaded model to the list
     return models
+
