@@ -140,7 +140,7 @@ Scaling is useful and necessary for following models:
 - ANN
 - SVM
 
-Scaling is not useful for following models:
+Scaling is not useful or improves results significantly for following models:
 - Random Forest
 - Gradient Boosting
 - Linear Regression
