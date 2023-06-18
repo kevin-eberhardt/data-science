@@ -1,0 +1,82 @@
+[
+    {
+        "name": "LinearRegression",
+        "best_params": {
+            "copy_X": true,
+            "fit_intercept": true
+        },
+        "best_score": 0.5327285592690533,
+        "fit_time": 0.009988546371459961
+    },
+    {
+        "name": "DecisionTreeRegressor",
+        "best_params": {
+            "criterion": "squared_error",
+            "max_depth": null,
+            "min_samples_leaf": 1,
+            "min_samples_split": 2,
+            "splitter": "best"
+        },
+        "best_score": 0.7073883989242278,
+        "fit_time": 0.07996821403503418
+    },
+    {
+        "name": "RandomForestRegressor",
+        "best_params": {
+            "criterion": "friedman_mse",
+            "max_depth": null,
+            "min_samples_leaf": 1,
+            "min_samples_split": 2,
+            "n_estimators": 200
+        },
+        "best_score": 0.8172918706792054,
+        "fit_time": 13.01500129699707
+    },
+    {
+        "name": "Gradient Boosting Regressor",
+        "best_params": {
+            "learning_rate": 0.05,
+            "loss": "absolute_error",
+            "max_depth": null,
+            "min_samples_split": 10,
+            "n_estimators": 500
+        },
+        "best_score": 0.848391925827347,
+        "fit_time": 198.70731782913208
+    },
+    {
+        "name": "Support Vector Machine",
+        "best_params": {
+            "C": 100,
+            "kernel": "rbf"
+        },
+        "best_score": 0.6261900880869085,
+        "fit_time": 38.09536671638489
+    },
+    {
+        "name": "ANN",
+        "best_params": {
+            "activation": "relu",
+            "alpha": 0.0001,
+            "hidden_layer_sizes": [
+                100,
+                75,
+                50,
+                25
+            ],
+            "learning_rate": "constant",
+            "solver": "adam"
+        },
+        "best_score": 0.6141883495943115,
+        "fit_time": 43.284379959106445
+    },
+    {
+        "name": "KNN",
+        "best_params": {
+            "n_neighbors": 15,
+            "weights": "distance"
+        },
+        "best_score": 0.7970711096671389,
+        "fit_time": 0.033989667892456055
+    }
+]
