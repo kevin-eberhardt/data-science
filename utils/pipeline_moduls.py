@@ -105,19 +105,30 @@ def outlier_label(df):
 
     #detect outliers with z-score and set them to NaN with = np.nan
 
-    z = np.abs(stats.zscore(df.iloc[:, df.shape[1]-1]))
-    df.iloc[:, df.shape[1]-1][(z >= 3)] = np.nan
+    #variante 1
+    #z = np.abs(stats.zscore(df.iloc[:, df.shape[1]-1]))
+    #df.iloc[:, df.shape[1]-1][(z >= 3)] = np.nan
+    #imputer = KNNImputer(n_neighbors=5).set_output(transform="pandas")
+    #df.iloc[:, df.shape[1]-1] = imputer.fit_transform(df)
 
-    #impute last column with KNNImputer
-    imputer = KNNImputer(n_neighbors=5).set_output(transform="pandas")
-    df.iloc[:, df.shape[1]-1] = imputer.fit_transform(df)
+    #variante 2
+    # df.iloc[:, df.shape[1]-1][(df.iloc[:, df.shape[1]-1] > 10)] = np.nan
+    # imputer = SimpleImputer(strategy="mean").set_output(transform="pandas")
+    # df.iloc[:, df.shape[1]-1] = imputer.fit_transform(df)
+    # df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(int)
 
-
-    #make all label values integers
-    df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(int)
-    #cast to float
-    df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(float)
+    #variante 3
+    #delete all rows where last column values are greater equal than 10
+    #df = df[df.iloc[:, df.shape[1]-1] < 10]
     
+    
+    # lösungsansatz 
+    imputer = KNNImputer(n_neighbors=5)
+    df.iloc[:, df.shape[1]-1][(df.iloc[:, df.shape[1]-1] > 10)] = np.nan
+    imputed_data = imputer.fit_transform(df)  # impute all the missing data
+    df_temp = pd.DataFrame(imputed_data)
+    df_temp.columns = df.columns
+    df["label__quality"] = df_temp["label__quality"]
     return df
 
 def outlier_num(df, strategy='median'):
