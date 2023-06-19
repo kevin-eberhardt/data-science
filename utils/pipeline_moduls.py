@@ -121,12 +121,12 @@ def outlier_label(df):
     
     
     # lösungsansatz 
-    imputer = KNNImputer(n_neighbors=5)
-    df.iloc[:, df.shape[1]-1][(df.iloc[:, df.shape[1]-1] > 10)] = np.nan
-    imputed_data = imputer.fit_transform(df)  # impute all the missing data
-    df_temp = pd.DataFrame(imputed_data)
-    df_temp.columns = df.columns
-    df["label__quality"] = df_temp["label__quality"]
+    #imputer = KNNImputer(n_neighbors=5)
+    #df.iloc[:, df.shape[1]-1][(df.iloc[:, df.shape[1]-1] > 10)] = np.nan
+    #imputed_data = imputer.fit_transform(df)  # impute all the missing data
+    #df_temp = pd.DataFrame(imputed_data)
+    #df_temp.columns = df.columns
+    #df["label__quality"] = df_temp["label__quality"]
     return df
 
 def outlier_num(df, strategy='median'):
