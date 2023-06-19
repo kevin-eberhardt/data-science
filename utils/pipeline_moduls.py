@@ -103,20 +103,21 @@ def outlier_label(df):
     """
     #detect outliers and impute them with the simple imputer
 
-    #detect outliers with z-score and set them to NaN with = np.nan
+    #delete all rows where the label is > 10
+    df = df[df.iloc[:, df.shape[1]-1] <= 10]
 
-    z = np.abs(stats.zscore(df.iloc[:, df.shape[1]-1]))
-    df.iloc[:, df.shape[1]-1][(z >= 3)] = np.nan
+    # z = np.abs(stats.zscore(df.iloc[:, df.shape[1]-1]))
+    # df.iloc[:, df.shape[1]-1][(z >= 3)] = np.nan
 
     #impute last column with KNNImputer
-    imputer = KNNImputer(n_neighbors=5).set_output(transform="pandas")
-    df.iloc[:, df.shape[1]-1] = imputer.fit_transform(df)
+    # imputer = KNNImputer(n_neighbors=5).set_output(transform="pandas")
+    # df.iloc[:, df.shape[1]-1] = imputer.fit_transform(df)
 
 
     #make all label values integers
-    df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(int)
+    #df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(int)
     #cast to float
-    df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(float)
+    #df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(float)
     
     return df
 
