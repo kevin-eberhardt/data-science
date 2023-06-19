@@ -108,9 +108,15 @@ def outlier_label(df):
     z = np.abs(stats.zscore(df.iloc[:, df.shape[1]-1]))
     df.iloc[:, df.shape[1]-1][(z >= 3)] = np.nan
 
-    #impute outliers with linear regression
+    #impute last column with KNNImputer
     imputer = KNNImputer(n_neighbors=5).set_output(transform="pandas")
-    df = imputer.fit_transform(df)
+    df.iloc[:, df.shape[1]-1] = imputer.fit_transform(df)
+
+
+    #make all label values integers
+    df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(int)
+    #cast to float
+    df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(float)
     
     return df
 
