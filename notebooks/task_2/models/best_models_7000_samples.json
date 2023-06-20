@@ -6,7 +6,7 @@
             "fit_intercept": true
         },
         "best_score": 0.5361524630669312,
-        "fit_time": 0.01199650764465332,
+        "fit_time": 0.011995553970336914,
         "test_score": 0.5296181819203758
     },
     {
@@ -18,72 +18,21 @@
             "min_samples_split": 2,
             "splitter": "best"
         },
-        "best_score": 0.7439722834380256,
-        "fit_time": 0.06497550010681152,
-        "test_score": 0.7638594660206086
+        "best_score": 0.7486894809833757,
+        "fit_time": 0.06297540664672852,
+        "test_score": 0.7842947045380559
     },
     {
         "name": "RandomForestRegressor",
         "best_params": {
-            "criterion": "squared_error",
+            "criterion": "friedman_mse",
             "max_depth": null,
             "min_samples_leaf": 1,
             "min_samples_split": 2,
             "n_estimators": 200
         },
-        "best_score": 0.8371491692598763,
-        "fit_time": 15.484049558639526,
-        "test_score": 0.8592414668728948
-    },
-    {
-        "name": "Gradient Boosting Regressor",
-        "best_params": {
-            "learning_rate": 0.05,
-            "loss": "absolute_error",
-            "max_depth": null,
-            "min_samples_split": 2,
-            "n_estimators": 500
-        },
-        "best_score": 0.8682039536914413,
-        "fit_time": 288.31439328193665,
-        "test_score": 0.886179367679643
-    },
-    {
-        "name": "Support Vector Machine",
-        "best_params": {
-            "C": 100,
-            "kernel": "rbf"
-        },
-        "best_score": 0.6081382319950254,
-        "fit_time": 13.42084288597107,
-        "test_score": 0.6324077923264945
-    },
-    {
-        "name": "ANN",
-        "best_params": {
-            "activation": "relu",
-            "alpha": 0.01,
-            "hidden_layer_sizes": [
-                100,
-                75,
-                50,
-                25
-            ],
-            "learning_rate": "constant",
-            "solver": "adam"
-        },
-        "best_score": 0.6136655792191845,
-        "fit_time": 31.368953943252563,
-        "test_score": 0.6019066110711335
-    },
-    {
-        "name": "KNN",
-        "best_params": {
-            "n_neighbors": 15,
-            "weights": "distance"
-        },
-        "best_score": 0.8356434480709151,
-        "fit_time": 0.032987117767333984,
-        "test_score": 0.8535378254764975
+        "best_score": 0.8367215196210633,
+        "fit_time": 13.91865348815918,
+        "test_score": 0.8613304165569273
     }
 ]
