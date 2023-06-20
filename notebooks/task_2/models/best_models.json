@@ -5,9 +5,9 @@
             "copy_X": true,
             "fit_intercept": true
         },
-        "best_score": 0.5285902074743312,
-        "fit_time": 0.009996414184570312,
-        "test_score": 0.5346802695142394
+        "best_score": 0.5338265950895867,
+        "fit_time": 0.013994932174682617,
+        "test_score": 0.5345042128361116
     },
     {
         "name": "DecisionTreeRegressor",
@@ -18,22 +18,22 @@
             "min_samples_split": 2,
             "splitter": "best"
         },
-        "best_score": 0.7853114843932103,
-        "fit_time": 0.08596563339233398,
-        "test_score": 0.8935273259906269
+        "best_score": 0.8017226456239085,
+        "fit_time": 0.07297110557556152,
+        "test_score": 0.8707168449342046
     },
     {
         "name": "RandomForestRegressor",
         "best_params": {
-            "criterion": "friedman_mse",
+            "criterion": "squared_error",
             "max_depth": null,
             "min_samples_leaf": 1,
             "min_samples_split": 2,
-            "n_estimators": 200
+            "n_estimators": 100
         },
-        "best_score": 0.8571375326592389,
-        "fit_time": 14.88930892944336,
-        "test_score": 0.9071000257055527
+        "best_score": 0.862724431869094,
+        "fit_time": 8.816641330718994,
+        "test_score": 0.8968662525692973
     },
     {
         "name": "Gradient Boosting Regressor",
@@ -44,9 +44,9 @@
             "min_samples_split": 5,
             "n_estimators": 500
         },
-        "best_score": 0.8941676489682642,
-        "fit_time": 240.01233959197998,
-        "test_score": 0.9470209317998278
+        "best_score": 0.8985353567713872,
+        "fit_time": 283.59894728660583,
+        "test_score": 0.9390714392273027
     },
     {
         "name": "Support Vector Machine",
@@ -54,27 +54,27 @@
             "C": 100,
             "kernel": "rbf"
         },
-        "best_score": 0.6612022697859661,
-        "fit_time": 50.04278254508972,
-        "test_score": 0.6905035138107791
+        "best_score": 0.6187713572092,
+        "fit_time": 21.99854874610901,
+        "test_score": 0.6229176063585002
     },
     {
         "name": "ANN",
         "best_params": {
             "activation": "relu",
-            "alpha": 0.0001,
+            "alpha": 0.001,
             "hidden_layer_sizes": [
                 100,
                 75,
                 50,
                 25
             ],
-            "learning_rate": "invscaling",
+            "learning_rate": "adaptive",
             "solver": "adam"
         },
-        "best_score": 0.6297410114700644,
-        "fit_time": 49.34304761886597,
-        "test_score": 0.635698063671797
+        "best_score": 0.6153599808056175,
+        "fit_time": 50.628554582595825,
+        "test_score": 0.6280927231704552
     },
     {
         "name": "KNN",
@@ -82,8 +82,8 @@
             "n_neighbors": 15,
             "weights": "distance"
         },
-        "best_score": 0.8608909097701825,
-        "fit_time": 0.03798842430114746,
-        "test_score": 0.9297661676186596
+        "best_score": 0.8622041505512621,
+        "fit_time": 0.03598618507385254,
+        "test_score": 0.9275953629832119
     }
 ]
