@@ -34,5 +34,56 @@
         "best_score": 0.8367215196210633,
         "fit_time": 13.91865348815918,
         "test_score": 0.8613304165569273
+    },
+    {
+        "name": "Gradient Boosting Regressor",
+        "best_params": {
+            "learning_rate": 0.05,
+            "loss": "absolute_error",
+            "max_depth": null,
+            "min_samples_split": 2,
+            "n_estimators": 500
+        },
+        "best_score": 0.870339692351329,
+        "fit_time": 242.45490026474,
+        "test_score": 0.882921285695199
+    },
+    {
+        "name": "Support Vector Machine",
+        "best_params": {
+            "C": 100,
+            "kernel": "rbf"
+        },
+        "best_score": 0.6319361251091907,
+        "fit_time": 42.292750120162964,
+        "test_score": 0.6514476148866453
+    },
+    {
+        "name": "ANN",
+        "best_params": {
+            "activation": "relu",
+            "alpha": 0.01,
+            "hidden_layer_sizes": [
+                100,
+                75,
+                50,
+                25
+            ],
+            "learning_rate": "constant",
+            "solver": "adam"
+        },
+        "best_score": 0.6160400854722539,
+        "fit_time": 44.91675162315369,
+        "test_score": 0.6257465486672892
+    },
+    {
+        "name": "KNN",
+        "best_params": {
+            "n_neighbors": 15,
+            "weights": "distance"
+        },
+        "best_score": 0.8258640465632032,
+        "fit_time": 0.03298830986022949,
+        "test_score": 0.8530946418730501
     }
 ]
