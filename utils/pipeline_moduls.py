@@ -106,30 +106,9 @@ def outlier_label(df):
     #delete all rows where the label is > 10
     df = df[df.iloc[:, df.shape[1]-1] <= 10]
 
-    # z = np.abs(stats.zscore(df.iloc[:, df.shape[1]-1]))
-    # df.iloc[:, df.shape[1]-1][(z >= 3)] = np.nan
-
-    #impute last column with KNNImputer
-    # imputer = KNNImputer(n_neighbors=5).set_output(transform="pandas")
-    # df.iloc[:, df.shape[1]-1] = imputer.fit_transform(df)
-
-
-    #make all label values integers
-    #df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(int)
-    #cast to float
-    #df.iloc[:, df.shape[1]-1] = df.iloc[:, df.shape[1]-1].astype(float)
-    
-    
-    # lösungsansatz 
-    #imputer = KNNImputer(n_neighbors=5)
-    #df.iloc[:, df.shape[1]-1][(df.iloc[:, df.shape[1]-1] > 10)] = np.nan
-    #imputed_data = imputer.fit_transform(df)  # impute all the missing data
-    #df_temp = pd.DataFrame(imputed_data)
-    #df_temp.columns = df.columns
-    #df["label__quality"] = df_temp["label__quality"]
     return df
 
-def outlier_num(df, strategy='median'):
+def outlier_num(df):
     """This function detects outliers in the dataframe and imputes them with the median.
     :param df: dataframe with only numerical features
     :param strategy: choose median, mean  most_frequent method. Defaul = median
@@ -139,28 +118,26 @@ def outlier_num(df, strategy='median'):
     Q1 = df.quantile(0.25)
     Q3 = df.quantile(0.75)
     IQR = Q3 - Q1
+    
+    not_normalized_columns = []
 
     #detect outliers for each column and set them to NaN
     for col in df.columns:
         df.loc[(df[col] < (Q1[col] - 1.5 * IQR[col])) | (df[col] > (Q3[col] + 1.5 * IQR[col])), col] = np.nan
 
-    #impute outliers with median
-    if strategy == 'median':
-        imputer = SimpleImputer(strategy='median').set_output(transform="pandas")
-        df = imputer.fit_transform(df)
-    #impute outliers with mean
-    elif strategy == 'mean':
-        imputer = SimpleImputer(strategy='mean').set_output(transform="pandas")
-        df = imputer.fit_transform(df)
-    #impute outliers with most frequent value
-    elif strategy == 'most_frequent':
-        imputer = SimpleImputer(strategy='most_frequent').set_output(transform="pandas")
-        df = imputer.fit_transform(df)
-    else:
-        #impute outliers with median
-        imputer = SimpleImputer(strategy='median').set_output(transform="pandas")
-        df = imputer.fit_transform(df)
+        #check if column is normal distributed
+        p_value_uniform_distribution = stats.kstest(df[col], 'uniform').pvalue
 
+        if p_value_uniform_distribution < 0.05:
+                df[col] = df[col].fillna(df[col].median())
+                not_normalized_columns.append(col)
+
+        elif df[col].skew() > 0.5 or df[col].skew() < -0.5:
+            df[col] = df[col].fillna(df[col].median())
+            not_normalized_columns.append(col)
+            
+        else:
+            df[col] = df[col].fillna(df[col].mean())
     return df
 
 
