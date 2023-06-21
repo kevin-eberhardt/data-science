@@ -5,9 +5,9 @@
             "copy_X": true,
             "fit_intercept": true
         },
-        "best_score": 0.5361524630669312,
-        "fit_time": 0.011995553970336914,
-        "test_score": 0.5296181819203758
+        "best_score": 0.536606014393309,
+        "fit_time": 0.010557174682617188,
+        "test_score": 0.5304305139944511
     },
     {
         "name": "DecisionTreeRegressor",
@@ -18,9 +18,9 @@
             "min_samples_split": 2,
             "splitter": "best"
         },
-        "best_score": 0.7486894809833757,
-        "fit_time": 0.06297540664672852,
-        "test_score": 0.7842947045380559
+        "best_score": 0.7406565554405997,
+        "fit_time": 0.06697344779968262,
+        "test_score": 0.7837270590236824
     },
     {
         "name": "RandomForestRegressor",
@@ -31,9 +31,9 @@
             "min_samples_split": 2,
             "n_estimators": 200
         },
-        "best_score": 0.8367215196210633,
-        "fit_time": 13.91865348815918,
-        "test_score": 0.8613304165569273
+        "best_score": 0.8393837849617622,
+        "fit_time": 13.033994674682617,
+        "test_score": 0.8606282958201987
     },
     {
         "name": "Gradient Boosting Regressor",
@@ -44,9 +44,9 @@
             "min_samples_split": 2,
             "n_estimators": 500
         },
-        "best_score": 0.870339692351329,
-        "fit_time": 242.45490026474,
-        "test_score": 0.882921285695199
+        "best_score": 0.8697342627391118,
+        "fit_time": 240.17977023124695,
+        "test_score": 0.8918227641571556
     },
     {
         "name": "Support Vector Machine",
@@ -54,9 +54,9 @@
             "C": 100,
             "kernel": "rbf"
         },
-        "best_score": 0.6319361251091907,
-        "fit_time": 42.292750120162964,
-        "test_score": 0.6514476148866453
+        "best_score": 0.63232451508251,
+        "fit_time": 42.32074213027954,
+        "test_score": 0.6520592369914531
     },
     {
         "name": "ANN",
@@ -72,9 +72,9 @@
             "learning_rate": "constant",
             "solver": "adam"
         },
-        "best_score": 0.6160400854722539,
-        "fit_time": 44.91675162315369,
-        "test_score": 0.6257465486672892
+        "best_score": 0.6173655096010308,
+        "fit_time": 41.21523594856262,
+        "test_score": 0.6055873165743998
     },
     {
         "name": "KNN",
@@ -82,8 +82,8 @@
             "n_neighbors": 15,
             "weights": "distance"
         },
-        "best_score": 0.8258640465632032,
-        "fit_time": 0.03298830986022949,
-        "test_score": 0.8530946418730501
+        "best_score": 0.8265983259438945,
+        "fit_time": 0.033991098403930664,
+        "test_score": 0.8534763445583027
     }
 ]
