@@ -18,7 +18,6 @@ import pickle
 
 
 def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
-    #-------------------------------------------------Colinearity-------------------------------------------------
     dropped_features = []
     # Calculate the correlation between columns
     corr_matrix = df.corr().abs()
@@ -30,8 +29,6 @@ def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
     
     # Find the columns with colinearity greater than correlation_threshold
     colinear_columns = upper_triangle[upper_triangle > colinearity_threshold].stack().index
-     # Get the values of colinearity
-    colinearity_values = upper_triangle[upper_triangle > colinearity_threshold].stack()
 
     # loop through the colinear_columns and select the one with lower correlation to quality and avoid duplicates in the list
     for col1, col2 in colinear_columns:
@@ -44,9 +41,7 @@ def fs_colinearity(df, colinearity_threshold=0.5,correlation_threshold=0.1):
         else:
                 corr_col = df[col2].corr(df['label__quality'])
                 if abs(corr_col) < correlation_threshold:
-                    dropped_features.append(col2)
-              
-                     
+                    dropped_features.append(col2)        
     return dropped_features
 
 def fs_vif(df, correlation_threshold=0.1, vif_threshold=5):
